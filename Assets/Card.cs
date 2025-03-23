@@ -69,6 +69,10 @@ public class Card : MonoBehaviour
 
                 Destroy(o.gameObject);
 
+                AudioSource audio = GetComponent<AudioSource>();
+                audio.Play();
+               
+
                 gm.points++;
                 gm.pointsText.text = "Points: " + gm.points;
 

@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour
     public TMP_Text gameOverText;
     public TMP_Text pointsText;
 
-
     public void Awake()
     {
         if(instance == null) {
@@ -59,6 +58,8 @@ public class GameManager : MonoBehaviour
         spawner.SetActive(true);
         gameOverText.text = "";
 
+        GameAudio.instance.PlayStart();
+
         Card player = playerCard.GetComponent<Card>();
         player.SetCard(1, false);
     }
@@ -73,6 +74,7 @@ public class GameManager : MonoBehaviour
 
         points = 0;
 
+        GameAudio.instance.PlayEnd();
 
         gameOverText.text = win ? "You Win!" : "Game Over";
     }
