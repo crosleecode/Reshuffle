@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [Header("Menus")]
     public GameObject mainMenu;
     public GameObject gameOverMenu;
+    public GameObject gameUI;
 
     [Header("Other")]
     public GameObject playerCard;
@@ -34,8 +35,7 @@ public class GameManager : MonoBehaviour
 
     [Header("UI Text")]
     public TMP_Text gameOverText;
-
-
+    public TMP_Text pointsText;
 
 
     public void Awake()
@@ -48,11 +48,13 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         points = 0;
+        pointsText.text = "Points: " + points;
         nextExpectedRank = 2;
         currentIsRed = false;
 
         mainMenu.SetActive(false);
         gameOverMenu.SetActive(false);
+        gameUI.SetActive(true);
         playerCard.SetActive(true);
         spawner.SetActive(true);
         gameOverText.text = "";
@@ -64,8 +66,13 @@ public class GameManager : MonoBehaviour
     public void EndGame(bool win)
     {
         playerCard.SetActive(false);
+        spawner.GetComponent<ObstacleSpawner>().StopSpawning();
         spawner.SetActive(false);
         gameOverMenu.SetActive(true);
+        gameUI.SetActive(false);
+
+        points = 0;
+
 
         gameOverText.text = win ? "You Win!" : "Game Over";
     }
@@ -87,6 +94,7 @@ public class GameManager : MonoBehaviour
     {
         mainMenu.SetActive(true);
         gameOverMenu.SetActive(false);
+        
     }
 
     public void SelectEasy()

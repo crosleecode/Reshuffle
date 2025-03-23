@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 502714811395890702}
   m_Layer: 7
   m_Name: ObstacleCard
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -330,6 +330,7 @@ MonoBehaviour:
   rankText: {fileID: 5103472165510689942}
   sr: {fileID: 5917248170187643751}
   isPlayer: 0
+  gm: {fileID: 0}
 --- !u!61 &502714811395890702
 BoxCollider2D:
   m_ObjectHideFlags: 0

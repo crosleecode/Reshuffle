@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.AdaptivePerformance.VisualScripting;
 
 public class Card : MonoBehaviour
 {
@@ -71,6 +70,7 @@ public class Card : MonoBehaviour
                 Destroy(o.gameObject);
 
                 gm.points++;
+                gm.pointsText.text = "Points: " + gm.points;
 
                 if(gm.points >= gm.pointsToWin)
                 {

@@ -12,10 +12,10 @@ public class ObstacleSpawner : MonoBehaviour
     public float xRange = 2.5f;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
+        StartSpawning();
         xRange = Camera.main.orthographicSize * Screen.width / Screen.height -.5f;
-        InvokeRepeating(nameof(SpawnObstacle), 1f, spawnRate);
     }
 
     void SpawnObstacle()
@@ -45,4 +45,15 @@ public class ObstacleSpawner : MonoBehaviour
         c.SetCard(rank,isRed);
 
     }
+
+    public void StartSpawning()
+    {
+        CancelInvoke(nameof(SpawnObstacle));
+        InvokeRepeating(nameof(SpawnObstacle), 1f, spawnRate);
+    }
+    public void StopSpawning()
+    {
+        CancelInvoke();
+    }
+
 }
